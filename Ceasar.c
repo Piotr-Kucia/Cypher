@@ -14,37 +14,57 @@ int Ceasar(){
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
         'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
     };
-  char special_characters[] = {'.', ',', '?', '!', ':', ';'};
+  char special_characters[] = {'.', ',', '?', '!', ':', ';',
+  	};
+
+  int upper_size = 26;
+  int lower_size = 26;
+  int special_size = 6;
+
+
   char message[100];
   int shift;
-  printf("\nEnter message\n");
-  scanf("%s", message);
+
   printf("\nEnter shift amount\n");
   scanf("%d", &shift);
-  /*
-  int i = 0;
-  // switch all letters for encryoted counterpart
-  while (message[i] != '\0'){
-    char ch = message[i];
-      if (isupper(ch)) {
-            message[i] = ((ch - 'A' + shift) % 26) + 'A';
-        }
-        else if (islower(ch)) {
-            message[i] = ((ch - 'a' + shift) % 26) + 'a';
-        }
-    i ++;
+  printf("\nEnter message\n");
+  while (getchar() != '\n');  // fgets does not work without this or in reverse order with fscan, idk why
+  fgets(message, sizeof(message), stdin);
 
+
+  // Encrypt the message
+  for (int i = 0; i < sizeof(message); i++) { // its three for loops in one for loop, which seems as a bad solution,
+    if (message[i] == '\0'){break;}// however it works and I understand this since it is a cave men like solution
+    if (isupper(message[i])) {
+      for (int j = 0; j < upper_size; j++) {
+        if (message[i] == alphabet_uppercase[j]) {
+          message[i] = alphabet_uppercase[(j) % upper_size];
+          break;
+        }
+      }
+    } else if (islower(message[i])) {
+      for (int j = 0; j < lower_size; j++) {
+        if (message[i] == alphabet_lowercase[j]) {
+          message[i] = alphabet_lowercase[(j + shift) % lower_size];
+          break;
+        }
+      }
+    } else {
+      for (int j = 0; j < special_size; j++) {
+        if (message[i] == special_characters[j]) {
+          message[i] = special_characters[(j + shift) % special_size];
+          // Special characters are changed in a custom predefiend order due to my laziness, it works so idc
+          break;
+        }
+      }
     }
-*/
-  int i =0;
-  while (message[i] != '0'){
-    char ch = message[i];
-
-
+  }
+    printf("%s", message);
+	return 0;
   }
 
 
 
-	return 0;
 
-	}
+
+
