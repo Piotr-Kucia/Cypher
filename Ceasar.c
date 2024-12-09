@@ -4,44 +4,32 @@
 #include <stdio.h>
 #include "Ceasar.h"
 #include <ctype.h>
-
+#include "Encryption_tables.h"
 #include "encryption_options.h"
 
-int shift_value(int uncheck_shift, int user_option, int modulo, int alphabet_position) { // function code works, it took me way too long to write that to make it work
-  //printf("Shift value before changes is %d\n", uncheck_shift);
-  int adjusted_position = alphabet_position + (uncheck_shift * user_option);
-  if (adjusted_position < 0) {
-    adjusted_position = modulo + (adjusted_position % modulo);
-  } else {
-    adjusted_position = adjusted_position % modulo;
-  }
-  //printf("Shift value after changes is %d\n", adjusted_position);
-  return adjusted_position;
-}
-
-
 int Ceasar(){
-  char alphabet_uppercase[] = {
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-    };
-  char alphabet_lowercase[] = {
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-        'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-    };
-  char special_characters[] = {'.', ',', '?', '!', ':', ';'};
 //abcdefghijklmnopqrstuvwxzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890<>?:"{}+_)(*&^%$#@!,./;'[]-=
   int upper_size = 26;
   int lower_size = 26;
   int special_size = 6;
-
-
   char message[200];
   int option;
   int shift;
   int encryption_option_value;
   printf("\nEncrypt or Decrypt (1/0)");
   scanf("%d", &option );
+  switch (option) {
+    case (0):
+      printf("\nUser choose Decryption");
+      break;
+    case(1):
+      printf("\nUser choose Encryption");
+      break;
+    default:
+      printf("\nUser choose INVALID Option");
+      get_user_input();
+      break;
+  }
   printf("\nEnter shift amount\n");
   scanf("%d", &shift);
   shift = shift % upper_size;
@@ -78,20 +66,14 @@ int Ceasar(){
     } else {
       for (int j = 0; j < special_size; j++) {
         if (message[i] == special_characters[j]) {
-          message[i] = special_characters[shift_value(shift,encryption_option_value,lower_size,j)];
+          message[i] = special_characters[shift_value(shift,encryption_option_value,special_size,j)];
           // Special characters are changed in a custom predefiend order due to my laziness, it works so idc
           break;
         }
       }
     }
   }
-  printf("Encrypted message = %s \n\n\n", message);
+  printf("Encrypted message \n%s \n\n", message);
   get_user_input();
   return 0;
   }
-
-
-
-
-
-
