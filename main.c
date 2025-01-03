@@ -6,6 +6,7 @@
 #include <stdio.h>
 
 int main(){
+
 // ask user to choose one of the options
   get_user_input();
 

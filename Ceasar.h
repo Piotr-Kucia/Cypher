@@ -5,5 +5,5 @@
 #ifndef CEASAR_H
 #define CEASAR_H
 
-int Ceasar();
+void Ceasar();
 #endif //CEASAR_H
