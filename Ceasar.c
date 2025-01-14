@@ -27,7 +27,7 @@ void Ceasar(){
 
   printf("\nEnter message\n");
   while (getchar() != '\n');  // fgets does not work without this or in reverse order with fscan, idk why
-  fgets(message, sizeof(message), stdin);
+  fgets(message, sizeof(mechar user_alphabet[26];ssage), stdin);
 
   printf("\nEncrypt or Decrypt (1/0)");
   scanf("%d", &option );
@@ -73,3 +73,4 @@ shift = shift % upper_size;
   }
   printf("Encrypted message = %s \n\n\n", message);
     }
+// Praise the 0mnissiah

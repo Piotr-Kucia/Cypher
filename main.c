@@ -15,3 +15,4 @@ int main(){
  gcc main.c encryption_options.c encryption_options.h Ceasar.c Ceasar.h
  */
 }
+// Praise the machine spirit

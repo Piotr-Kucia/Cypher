@@ -9,4 +9,5 @@ extern char alphabet_lowercase[];
 extern char alphabet_uppercase[];
 extern char special_characters[];
 int shift_value(int uncheck_shift, int user_option, int modulo, int alphabet_position);
+void encrypt_substitution(char alphabet_to_take[], char alphabet_to_compare[], char message[]);
 #endif //ENCRYPTION_TABLES_H
