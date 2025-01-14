@@ -9,7 +9,14 @@
 #include "Substitution.h"
 
 void Substitution(char user_alphabet[]){
+char encrypted_message[500];
     get_user_input_message();
-    encrypt_substitution(alphabet_lowercase,user_alphabet,message);
+    encrypt_substitution(alphabet_lowercase,user_alphabet,message,encrypted_message);
+char temp_message[500];
+    encrypt_substitution(user_alphabet,alphabet_lowercase,encrypted_message,temp_message);
+}
+void Substitution_decipher(char user_alphabet[]){
+
+
 }
 //Praise the machine spirit

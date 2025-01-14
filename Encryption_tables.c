@@ -26,8 +26,7 @@ int shift_value(int uncheck_shift, int user_option, int modulo, int alphabet_pos
 
   return adjusted_position;
 }
-void encrypt_substitution(char alphabet_to_take[], char alphabet_to_compare[], char message[]) {
-    char encrypted_message[500];
+void encrypt_substitution(char alphabet_to_take[], char alphabet_to_compare[], char message[],char encrypted_message[]) {
 
     for (int i = 0; message[i] != '\0'; i++) {
         int skibidi = 0;  // variable names show my mental state
